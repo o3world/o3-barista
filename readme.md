@@ -17,6 +17,12 @@ git clone git@bitbucket.org:o3world/coffee-personality.git
 cd coffee-personality
 ```
 
+Set up the `heroku` remote.
+
+```
+heroku git:remote -a coffee-personality
+```
+
 Install and activate Node v6.6.0, preferably using NVM.
 
 ```
@@ -45,6 +51,14 @@ Alternatively, you can run the start script directly, and set your environment v
 
 ```
 npm start
+```
+
+## Deployment
+
+The app is deployed to the `coffee-personality` Heroku app via Git.
+
+```
+git push heroku master
 ```
 
 ## Internal Documentation
