@@ -10,3 +10,7 @@ gulp.task('lint', () => (
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
 ));
+
+gulp.task('watch', () => {
+  gulp.watch(lintFiles, ['lint']);
+});
