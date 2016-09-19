@@ -32,10 +32,10 @@ app.use('/users', users);
 
 //twitter api implementation
 var client = new Twitter({
-    consumer_key: 'LQuS05zAzfevyYamHYE6tjcof',
-    consumer_secret: 'WWj7leP6Ln1RcoFVcc55UdzGewm4aPj7RlPloM0sEDyMvy70Yy',
-    access_token_key: '3191748465-x1pfwk50NxRWncz4BkLyaX0AWkgikmAIMTl9a6p',
-    access_token_secret: '8kTbJ28YtKT7EM418zwC1Hyk26O0107VsRSGGvpCYILl8'
+    consumer_key: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_SECRET
 });
 
 //change the username from nodejs to any other users.
