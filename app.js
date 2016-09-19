@@ -52,8 +52,8 @@ app.get('/api/getname/:name', function(req, res) {
 
 //watson personality api implementation
 var personality_insights = watson.personality_insights({
-    username: '9d39e432-b24d-44c4-b38b-22a3bea40b59',
-    password: '0HhClFlF8EbQ',
+    username: process.env.COFFEE_PERSONALITY_INSIGHTS_USERNAME,
+    password: process.env.COFFEE_PERSONALITY_INSIGHTS_PASSWORD,
     version: 'v2'
 });
 
