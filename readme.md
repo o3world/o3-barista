@@ -23,10 +23,10 @@ Set up the `heroku` remote.
 heroku git:remote -a coffee-personality
 ```
 
-Install and activate Node v6.6.0, preferably using NVM.
+Install and activate Node v6.6.0, preferably using [nvm](https://github.com/creationix/nvm). Once it is installed, you can run `nvm use` to activate it.
 
 ```
-nvm install 6.6.0
+nvm install
 ```
 
 Install the Node dependencies.
