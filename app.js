@@ -2,14 +2,12 @@
 
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var Twitter = require('twitter');
 var watson = require('watson-developer-cloud');
 var Promise = require("bluebird");
-var Step = require("step")
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
