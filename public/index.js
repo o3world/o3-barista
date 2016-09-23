@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module("app", []);
 
 app.controller('name', ['$scope', '$http', function($scope, $http){
