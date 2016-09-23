@@ -18,5 +18,11 @@
     "step": "0.0.6",
     "twitter": "^1.4.0",
     "watson-developer-cloud": "^2.3.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "jshint": "^2.9.3",
+    "jshint-stylish": "^2.2.1"
   }
 }
