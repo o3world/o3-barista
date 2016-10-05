@@ -17,61 +17,11 @@
     </div> -->
     <p></p>
     <p ng-repeat="stuff in array">{{stuff.id}}: {{stuff.percentage*100 | number:0}}%</p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <script src="index.js"></script>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<!-- <script src="/views/index.js"></script> -->
-<script>
-    var app = angular.module("app", []);
 
-app.controller('name', ['$scope', '$http', function($scope, $http){
-    
-
-    $scope.getData = function(){
-        $http.put('/api/watson/' + $scope.twitter)
-        .success((data)=>{
-            $scope.array = data
-        })
-        .error((err)=>{
-            console.log(err);
-        })
-    }
-
-    var fun = function(oneP, onePP, twoP, twoPP, threeP, threePP, fourP, fourPP ){
-        
-    }
-}])
-</script>
-<!-- <script>
-$('#twitterInput').submit(function(e) {
-    e.preventDefault();
-    //gets the input
-    var input = $('#twitterName').val();
-    //console.log(input);
-    $.ajax({
-        type: 'PUT',
-        url: '/api/watson/' + input,
-        success: function(data) {
-            $('#twitterOutput').append("<p>" + JSON.stringify(data) + "</p>")
-                /*
-                 **manipulate the json data returned from the watson api
-                 */
-            //var parseData = JSON.parse(data);
-            console.log('test');
-            //$('#results').html('word count: ' + json.word_count);
-
-            // for (var i = 0; i < data.length; i++) {
-            //     console.log(data[i].text)
-            // }
-            //return data;
-        },
-        failure: function(err) {
-            console.log(err);
-        }
-    });
-});
-
-$('#personalWatson').submit
-</script>
--->
 </html>

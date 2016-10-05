@@ -1,15 +1,17 @@
 'use strict';
 
-const app = angular.module("app", []);
+angular.module("app", [])
 
-app.controller('name', [
+.controller('name', [
 '$scope', '$http',
 function($scope, $http) {
-  $http.get('/data')
-  .success((data) => {
-    $scope.array = data;
-  })
-  .error((err) => {
-    console.log(err);
-  });
+  $scope.getData = function() {
+    $http.put('/api/watson/' + $scope.twitter)
+      .success((data) => {
+        $scope.array = data;
+      })
+      .error((err) => {
+        console.log(err);
+      });
+  };
 }]);
