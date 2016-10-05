@@ -25,14 +25,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-const client = new Twitter({
+const twitterClient = new Twitter({
   consumer_key: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_SECRET
 });
 
-const personality_insights = watson.personality_insights({
+const personalityInsightsClient = watson.personality_insights({
   username: process.env.COFFEE_PERSONALITY_INSIGHTS_USERNAME,
   password: process.env.COFFEE_PERSONALITY_INSIGHTS_PASSWORD,
   version: 'v2'
@@ -44,7 +44,7 @@ app.put('/api/watson/:twitteruser', function(req, res) {
   const watsonFetch = function() {
     return new Promise(function(resolve) {
       const params = { screen_name: username, count: 5000 };
-      client.get('statuses/user_timeline', params, function(error, tweets) {
+      twitterClient.get('statuses/user_timeline', params, function(error, tweets) {
         if (!error) {
           let test;
           for (let i = 0; i < tweets.length; i++) {
@@ -59,7 +59,7 @@ app.put('/api/watson/:twitteruser', function(req, res) {
 
   watsonFetch()
     .then(function(result) {
-      personality_insights.profile({
+      personalityInsightsClient.profile({
         text: result,
         language: 'en'
       }, function(err, response) {
