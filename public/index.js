@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("app", []);
+const app = angular.module("app", []);
 
 app.controller('name', ['$scope', '$http', function($scope, $http){
 	$http.get('/data')
