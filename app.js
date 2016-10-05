@@ -1,18 +1,17 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var Twitter = require('twitter');
-var watson = require('watson-developer-cloud');
-var Promise = require("bluebird");
-var Step = require("step")
+'use strict';
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const Twitter = require('twitter');
+const watson = require('watson-developer-cloud');
 
-var app = express();
+const routes = require('./routes/index');
+const users = require('./routes/users');
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +30,7 @@ app.use('/users', users);
 
 
 //twitter api implementation
-var client = new Twitter({
+const client = new Twitter({
     consumer_key: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_SECRET,
     access_token_key: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_KEY,
@@ -41,43 +40,42 @@ var client = new Twitter({
 //change the username from nodejs to any other users.
 //setup a variable to change the username here from the textbox from the html
 app.get('/api/getname/:name', function(req, res) {
-    var params = { screen_name: req.params.name, count: 1000 }; //username goes here
-    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    const params = { screen_name: req.params.name, count: 1000 }; //username goes here
+    client.get('statuses/user_timeline', params, function(error, tweets) {
         if (!error) {
             //console.log(tweets);
             res.json(tweets);
         }
     });
-})
+});
 
 //watson personality api implementation
-var personality_insights = watson.personality_insights({
+const personality_insights = watson.personality_insights({
     username: process.env.COFFEE_PERSONALITY_INSIGHTS_USERNAME,
     password: process.env.COFFEE_PERSONALITY_INSIGHTS_PASSWORD,
     version: 'v2'
 });
 
 app.put('/api/watson/:twitteruser', function(req, res) {
-    var username = req.params.twitteruser,
-        personalityText;
+    const username = req.params.twitteruser;
 
-    var watsonFetch = function() {
-        return new Promise(function(resolve, reject) {
+    const watsonFetch = function() {
+        return new Promise(function(resolve) {
 
-            var params = { screen_name: username, count: 5000 }; //username goes here
-            client.get('statuses/user_timeline', params, function(error, tweets, response) {
+            const params = { screen_name: username, count: 5000 }; //username goes here
+            client.get('statuses/user_timeline', params, function(error, tweets) {
                 if (!error) {
-                    var test;
+                    let test;
                     //console.log(tweets);
-                    for (var i = 0; i < tweets.length; i++) {
+                    for (let i = 0; i < tweets.length; i++) {
                         console.log(tweets[i].text);
                         test += tweets[i].text;
                     }
                     resolve(test);
                 }
             });
-        })
-    }
+        });
+    };
 
     watsonFetch()
         .then(function(result) {
@@ -86,25 +84,23 @@ app.put('/api/watson/:twitteruser', function(req, res) {
                     language: 'en'
                 },
                 function(err, response) {
-                    if (err)
+                    if (err) {
                         console.log('error:', err);
-                    else {
+                    } else {
                         //console.log(JSON.stringify(response, null, 2));
-                        
-                        jsonStuff = JSON.stringify(response, null, 2);
 
-                        var array = [];
-                        var i = response.tree.children
+                        const array = [];
+                        const i = response.tree.children;
                         i.forEach(function(thing) {
                             thing.children.forEach(function(thing2) {
-                                var obj = { id: thing2.id, percentage: thing2.percentage }
+                                const obj = { id: thing2.id, percentage: thing2.percentage };
                                 array.push(obj);
                                 thing2.children.forEach(function(thing4) {
-                                    var obj = { id: thing4.id, percentage: thing4.percentage }
+                                    const obj = { id: thing4.id, percentage: thing4.percentage };
                                     array.push(obj);
-                                })
-                            })
-                        })
+                                });
+                            });
+                        });
                         console.log(array);
                         res.json(array);
 
@@ -113,15 +109,15 @@ app.put('/api/watson/:twitteruser', function(req, res) {
         })
         .catch(function(e) {
             console.log(e);
-        })
-})
+        });
+});
 
 
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
@@ -131,7 +127,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function(err, req, res) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -142,7 +138,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
