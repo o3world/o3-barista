@@ -32,15 +32,6 @@ const client = new Twitter({
   access_token_secret: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_SECRET
 });
 
-app.get('/api/getname/:name', function(req, res) {
-  const params = { screen_name: req.params.name, count: 1000 };
-  client.get('statuses/user_timeline', params, function(error, tweets) {
-    if (!error) {
-      res.json(tweets);
-    }
-  });
-});
-
 const personality_insights = watson.personality_insights({
   username: process.env.COFFEE_PERSONALITY_INSIGHTS_USERNAME,
   password: process.env.COFFEE_PERSONALITY_INSIGHTS_PASSWORD,
