@@ -1,20 +1,20 @@
 <html>
-<head>
+  <head>
     <title>Coffee Personalizer</title>
-</head>
+  </head>
 
-<body ng-app="app" ng-controller="name">
+  <body ng-app="app" ng-controller="name">
     <form id="twitterInput" ng-submit = "getData()">
-        Twitter Handle
-        <br>
-        <br>
-        <input id="twitterName" type="text" name="twitterHandle" value="o3world" ng-model= "twitter">
-        <br>
-        <br>
-        <input type="submit" value="Submit">
+      Twitter Handle
+      <br>
+      <br>
+      <input id="twitterName" type="text" name="twitterHandle" value="o3world" ng-model= "twitter">
+      <br>
+      <br>
+      <input type="submit" value="Submit">
     </form>
     <!-- <div id="twitterOutput">
-    </div> -->
+         </div> -->
     <p></p>
     <p ng-repeat="stuff in array">{{stuff.id}}: {{stuff.percentage*100 | number:0}}%</p>
 
@@ -22,6 +22,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
     <script src="index.js"></script>
-</body>
-
+  </body>
 </html>
