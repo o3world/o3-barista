@@ -13,12 +13,9 @@ const users = require('./routes/users');
 
 const app = express();
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,7 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-//twitter api implementation
 const client = new Twitter({
   consumer_key: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_SECRET,
@@ -36,19 +32,15 @@ const client = new Twitter({
   access_token_secret: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_SECRET
 });
 
-//change the username from nodejs to any other users.
-//setup a variable to change the username here from the textbox from the html
 app.get('/api/getname/:name', function(req, res) {
-  const params = { screen_name: req.params.name, count: 1000 }; //username goes here
+  const params = { screen_name: req.params.name, count: 1000 };
   client.get('statuses/user_timeline', params, function(error, tweets) {
     if (!error) {
-      //console.log(tweets);
       res.json(tweets);
     }
   });
 });
 
-//watson personality api implementation
 const personality_insights = watson.personality_insights({
   username: process.env.COFFEE_PERSONALITY_INSIGHTS_USERNAME,
   password: process.env.COFFEE_PERSONALITY_INSIGHTS_PASSWORD,
@@ -60,11 +52,10 @@ app.put('/api/watson/:twitteruser', function(req, res) {
 
   const watsonFetch = function() {
     return new Promise(function(resolve) {
-      const params = { screen_name: username, count: 5000 }; //username goes here
+      const params = { screen_name: username, count: 5000 };
       client.get('statuses/user_timeline', params, function(error, tweets) {
         if (!error) {
           let test;
-          //console.log(tweets);
           for (let i = 0; i < tweets.length; i++) {
             console.log(tweets[i].text);
             test += tweets[i].text;
@@ -84,8 +75,6 @@ app.put('/api/watson/:twitteruser', function(req, res) {
         if (err) {
           console.log('error:', err);
         } else {
-          //console.log(JSON.stringify(response, null, 2));
-
           const array = [];
           const i = response.tree.children;
           i.forEach(function(thing) {
@@ -108,14 +97,14 @@ app.put('/api/watson/:twitteruser', function(req, res) {
     });
 });
 
+// error handlers
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
-// error handlers
 
 // development error handler
 // will print stacktrace
