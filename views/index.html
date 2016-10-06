@@ -14,6 +14,9 @@
       <input type="submit" value="Submit">
     </form>
     <p></p>
+
+    <p ng-if="preference">You sound like you would enjoy a {{preference}} roast.</p>
+
     <p ng-repeat="stuff in array">{{stuff.id}}: {{stuff.percentage*100 | number:0}}%</p>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
