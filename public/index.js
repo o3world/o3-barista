@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('app', [])
+angular.module('app', [
+  'ramda'
+])
 
 .controller('name', [
 '$scope', '$http',
