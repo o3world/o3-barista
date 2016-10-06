@@ -29,6 +29,8 @@ angular.module('personality.service', [
   const getLibertyPercentage = R.pipe(findLiberty, getPercentage);
 
   return {
-    determinePreference
+    determinePreference,
+    getCuriosityPercentage,
+    getLibertyPercentage
   };
 }]);

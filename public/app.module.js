@@ -1,5 +1,6 @@
 'use strict';
 
 angular.module('app', [
-  'personality'
+  'personality',
+  'percent.filter'
 ]);

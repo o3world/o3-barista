@@ -15,7 +15,11 @@
     </form>
     <p></p>
 
-    <p ng-if="preference">You sound like you would enjoy a {{preference}} roast.</p>
+    <div ng-if="preference">
+      <p>Your desire to discover and learn is {{curiosity | number:2 | decimalToPercent}}.</p>
+      <p>Your desire to pursue new experiences is at {{liberty | number:2 | decimalToPercent}}.</p>
+      <p>You sound like you would enjoy a {{preference}} roast.</p>
+    </div>
 
     <p ng-repeat="stuff in array">{{stuff.id}}: {{stuff.percentage*100 | number:0}}%</p>
 
@@ -28,6 +32,8 @@
     <script src="personality.module.js"></script>
     <script src="personality.controller.js"></script>
     <script src="personality.service.js"></script>
+
+    <script src="percent.filter.js"></script>
 
     <script src="ramda.module.js"></script>
   </body>
