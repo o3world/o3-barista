@@ -26,9 +26,9 @@ function($scope, $http, roastModel) {
     const curiosityPercentage = getCuriosityPercentage(profile);
     const libertyPercentage = getLibertyPercentage(profile);
 
-    if (curiosityPercentage >= .8 || libertyPercentage >= .8) {
+    if (curiosityPercentage >= 0.8 || libertyPercentage >= 0.8) {
       return 'light';
-    } else if (curiosityPercentage >= .5 || libertyPercentage >= .5) {
+    } else if (curiosityPercentage >= 0.5 || libertyPercentage >= 0.5) {
       return 'medium';
     } else {
       return 'dark';
