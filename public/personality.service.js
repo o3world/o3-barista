@@ -1,25 +1,10 @@
 'use strict';
 
-angular.module('app', [
+angular.module('personality.service', [
   'ramda'
 ])
 
-.controller('name', [
-'$scope', '$http', 'roastModel',
-function($scope, $http, roastModel) {
-  $scope.getData = function() {
-    $http.put('/api/watson/' + $scope.twitter)
-      .success((data) => {
-        $scope.array = data;
-        $scope.preference = roastModel.determinePreference(data);
-      })
-      .error((err) => {
-        console.log(err);
-      });
-  };
-}])
-
-.factory('roastModel', [
+.factory('personalityService', [
 'R',
 (R) => {
   function determinePreference(profile) {
