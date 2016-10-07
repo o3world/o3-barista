@@ -1,24 +1,22 @@
-<html>
-  <head>
-    <title>Coffee Personalizer</title>
-  </head>
+<div ng-app="app" ng-controller="PersonalityController">
+  <form id="twitterInput" ng-submit="getData()">
+    Twitter Handle
+    <br>
+    <br>
+    <input id="twitterName" type="text" name="twitterHandle" ng-model="twitter">
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+  <p></p>
 
-  <body ng-app="app" ng-controller="name">
-    <form id="twitterInput" ng-submit = "getData()">
-      Twitter Handle
-      <br>
-      <br>
-      <input id="twitterName" type="text" name="twitterHandle" value="o3world" ng-model= "twitter">
-      <br>
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-    <p></p>
-    <p ng-repeat="stuff in array">{{stuff.id}}: {{stuff.percentage*100 | number:0}}%</p>
+  <div ng-if="preference" ng-cloak>
+    <p>Your desire to discover and learn is {{curiosity | number:2 | decimalToPercent}}.</p>
+    <p>Your desire to pursue new experiences is at {{liberty | number:2 | decimalToPercent}}.</p>
+    <p>You sound like you would enjoy a {{preference}} roast.</p>
+  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
-    <script src="index.js"></script>
-  </body>
-</html>
+  <p ng-repeat="stuff in array" ng-cloak>
+    {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
+  </p>
+</div>
