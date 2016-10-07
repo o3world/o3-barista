@@ -1,7 +1,21 @@
+doctype html
 html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
-    include index.html
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js')
+
+    script(src='app.module.js')
+
+    script(src='personality.module.js')
+    script(src='personality.controller.js')
+    script(src='personality.service.js')
+
+    script(src='percent.filter.js')
+
+    script(src='ramda.module.js')

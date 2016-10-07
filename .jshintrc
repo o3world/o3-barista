@@ -13,7 +13,7 @@
   "nonew": true,
   "undef": true,
   "unused": true,
-  "strict": true,
+  "strict": "global",
   "varstmt": true,
 
   "devel": true,
