@@ -10,7 +10,7 @@ body {
   background-color: #7a0000;
   color: #fff;
   font-family: "Roboto Slab", Georgia, Times, serif;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   margin: 0;
 }
@@ -18,11 +18,21 @@ body {
 h1, h2, h3 {
   font-family: Lato, Helvetica, Arial, sans-serif;
   text-transform: uppercase;
+  margin-top: 0;
 }
 
 h1 {
-  margin-top: 0;
+  font-size: 1.75em;
   margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.125em;
 }
 
 input {
@@ -41,7 +51,7 @@ input {
   display: block;
   width: 100%;
   padding: 10px 10px;
-  font-size: 16px;
+  font-size: 1em;
   line-height: 1.5;
   background-color: #f9f9f9;
   font-family: Lato, Helvetica, Arial, sans-serif;
@@ -92,8 +102,12 @@ input {
 }
 
 @media (min-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+
   .container {
-    width: 33.3333%;
+    width: 50%;
     padding-top: 60px;
     padding-bottom: 60px;
   }
