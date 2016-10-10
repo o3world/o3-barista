@@ -1,12 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #7a0000;
+  color: #fff;
+  font-family: "Roboto Slab", Georgia, Times, serif;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+input {
+  text-align: center;
+}
+
+.container {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-width: 220px;
+  padding: 10px 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  border-radius: 0;
+  border: 2px solid transparent;
+}
+
+.form-control-vertical {
+  margin-bottom: 10px;
+}
+
+.form-control:focus, .form-control:active {
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  min-width: 220px;
+  background-color: transparent;
+  background-image: none;
+  color: #fff;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-radius: 0;
+  border: 3px solid #f9f9f9;
+  padding: 16px 30px;
+  margin-bottom: 0;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: border 0.2s, background 0.2s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #f9f9f9;
+  color: #ca0000;
+  text-decoration: none;
+  outline: none;
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+@media (min-width: 480px) {
+  .container {
+    width: 33.3333%;
+  }
 }
