@@ -40,7 +40,6 @@ input {
 .form-control {
   display: block;
   width: 100%;
-  min-width: 220px;
   padding: 10px 10px;
   font-size: 16px;
   line-height: 1.5;
@@ -61,7 +60,6 @@ input {
 .btn {
   display: inline-block;
   width: 100%;
-  min-width: 220px;
   background-color: transparent;
   background-image: none;
   color: #fff;
