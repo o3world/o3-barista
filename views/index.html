@@ -12,9 +12,10 @@
     <p>Your desire to discover and learn is {{curiosity | number:2 | decimalToPercent}}.</p>
     <p>Your desire to pursue new experiences is at {{liberty | number:2 | decimalToPercent}}.</p>
     <p>You sound like you would enjoy a {{preference}} roast.</p>
-  </div>
 
-  <p ng-repeat="stuff in array" ng-cloak>
-    {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
-  </p>
+    <h3>Other Traits</h3>
+    <p ng-repeat="stuff in array" ng-cloak>
+      {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
+    </p>
+  </div>
 </div>
