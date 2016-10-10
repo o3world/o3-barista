@@ -47,6 +47,11 @@ input {
   padding: 20px;
 }
 
+.logo {
+  height: 100px;
+  width: 100px;
+}
+
 .form-control {
   display: block;
   width: 100%;
@@ -110,5 +115,10 @@ input {
     width: 50%;
     padding-top: 60px;
     padding-bottom: 60px;
+  }
+
+  .logo {
+    height: 150px;
+    width: 150px;
   }
 }
