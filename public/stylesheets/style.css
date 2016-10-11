@@ -37,6 +37,8 @@ h3 {
 
 input {
   text-align: center;
+  border-radius: 0;
+  -webkit-appearance: none;
 }
 
 .container {
