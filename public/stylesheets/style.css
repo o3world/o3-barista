@@ -102,6 +102,23 @@ input {
   outline: none;
 }
 
+::-webkit-input-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+::-moz-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+:-ms-input-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+:-moz-placeholder {
+  color: #161515;
+  text-transform: uppercase;
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }

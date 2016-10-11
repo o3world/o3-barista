@@ -4,8 +4,12 @@
 
 <div ng-app="app" ng-controller="PersonalityController">
   <form id="twitterInput" ng-submit="getData()">
-    <h2>Twitter Handle</h2>
-    <input class="form-control form-control-vertical" id="twitterName" type="text" name="twitterHandle" ng-model="twitter">
+    <input type="text"
+        id="twitterName"
+        class="form-control form-control-vertical"
+        name="twitterHandle"
+        placeholder="Twitter Handle"
+        ng-model="twitter">
     <input class="btn" type="submit" value="Submit">
   </form>
   <p></p>
