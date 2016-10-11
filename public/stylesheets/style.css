@@ -41,6 +41,10 @@ input {
   -webkit-appearance: none;
 }
 
+input[type='text'], textarea {
+  font-size: 1em;
+}
+
 .container {
   display: block;
   width: 100%;
