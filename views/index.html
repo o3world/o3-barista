@@ -1,22 +1,27 @@
+
+<img class="logo" src="/svg/o3-labs-logo.svg">
+<h1>Coffee Personality</h1>
+
 <div ng-app="app" ng-controller="PersonalityController">
   <form id="twitterInput" ng-submit="getData()">
-    Twitter Handle
-    <br>
-    <br>
-    <input id="twitterName" type="text" name="twitterHandle" ng-model="twitter">
-    <br>
-    <br>
-    <input type="submit" value="Submit">
+    <input type="text"
+        id="twitterName"
+        class="form-control form-control-vertical"
+        name="twitterHandle"
+        placeholder="Twitter Handle"
+        ng-model="twitter">
+    <input class="btn" type="submit" value="Submit">
   </form>
   <p></p>
 
   <div ng-if="preference" ng-cloak>
-    <p>Your desire to discover and learn is {{curiosity | number:2 | decimalToPercent}}.</p>
+    <p>Your desire to discover and learn is at {{curiosity | number:2 | decimalToPercent}}.</p>
     <p>Your desire to pursue new experiences is at {{liberty | number:2 | decimalToPercent}}.</p>
     <p>You sound like you would enjoy a {{preference}} roast.</p>
-  </div>
 
-  <p ng-repeat="stuff in array" ng-cloak>
-    {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
-  </p>
+    <h3>Other Traits</h3>
+    <p ng-repeat="stuff in array" ng-cloak>
+      {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
+    </p>
+  </div>
 </div>
