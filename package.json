@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "webpack",
     "prestart": "webpack",
     "start": "node ./bin/www"
   },
