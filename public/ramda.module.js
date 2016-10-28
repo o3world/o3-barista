@@ -4,6 +4,6 @@ angular.module('ramda', [])
 
 .factory('R', [
 '$window',
-($window) => {
+$window => {
   return $window.R;
 }]);

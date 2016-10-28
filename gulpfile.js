@@ -3,7 +3,11 @@
 const gulp = require('gulp');
 const jshint = require('gulp-jshint');
 
-const lintFiles = ['**/*.js', '!node_modules/**/*'];
+const lintFiles = [
+  '**/*.js',
+  '!node_modules/**/*',
+  '!**/bundle.js'
+];
 
 gulp.task('lint', () => (
   gulp.src(lintFiles)

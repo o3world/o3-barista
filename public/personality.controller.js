@@ -4,17 +4,17 @@ angular.module('personality.controller', [])
 
 .controller('PersonalityController', [
 '$scope', '$http', 'personalityService',
-function($scope, $http, personalityService) {
-  $scope.getData = function() {
+($scope, $http, personalityService) => {
+  $scope.getData = () => {
     $http.put('/api/watson/' + $scope.twitter)
-      .success((data) => {
+      .success(data => {
         $scope.array = data;
 
         $scope.preference = personalityService.determinePreference(data);
         $scope.curiosity = personalityService.getCuriosityPercentage(data);
         $scope.liberty = personalityService.getLibertyPercentage(data);
       })
-      .error((err) => {
+      .error(err => {
         console.log(err);
       });
   };
