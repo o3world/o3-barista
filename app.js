@@ -26,15 +26,15 @@ app.use('/', routes);
 app.use('/users', users);
 
 const twitterClient = new Twitter({
-  consumer_key: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.COFFEE_PERSONALITY_TWITTER_CONSUMER_SECRET,
-  access_token_key: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.COFFEE_PERSONALITY_TWITTER_ACCESS_TOKEN_SECRET
+  consumer_key: process.env.O3_BARISTA_TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.O3_BARISTA_TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.O3_BARISTA_TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.O3_BARISTA_TWITTER_ACCESS_TOKEN_SECRET
 });
 
 const personalityInsightsClient = watson.personality_insights({
-  username: process.env.COFFEE_PERSONALITY_INSIGHTS_USERNAME,
-  password: process.env.COFFEE_PERSONALITY_INSIGHTS_PASSWORD,
+  username: process.env.O3_BARISTA_INSIGHTS_USERNAME,
+  password: process.env.O3_BARISTA_INSIGHTS_PASSWORD,
   version: 'v2'
 });
 
