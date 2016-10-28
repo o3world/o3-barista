@@ -2,10 +2,9 @@
 
 angular.module('percent.filter', [])
 
-.filter('decimalToPercent',
-function() {
-  return (decimal) => {
-    var percent = decimal * 100;
+.filter('decimalToPercent', () => {
+  return decimal => {
+    const percent = decimal * 100;
     return percent + '%';
   };
 });
