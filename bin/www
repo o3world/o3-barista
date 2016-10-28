@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('coffeeO3:server');
+var debug = require('debug')('o3-barista:server');
 var http = require('http');
 
 /**
