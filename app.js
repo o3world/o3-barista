@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const Twitter = require('twitter');
 const watson = require('watson-developer-cloud');
 
@@ -22,6 +23,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+const mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/o3-barista';
+mongoose.connect(mongodbUri, err => {
+  if (err) {
+    console.log('Error connecting to ' + mongodbUri + '. ' + err);
+  } else {
+    console.log('Connected to ' + mongodbUri);
+  }
+});
 
 const twitterClient = new Twitter({
   consumer_key: process.env.O3_BARISTA_TWITTER_CONSUMER_KEY,
