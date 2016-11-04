@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
-const mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/o3-barista';
+const mongodbUri = process.env.MONGODB_URI;
 mongoose.connect(mongodbUri, err => {
   if (err) {
     console.log('Error connecting to ' + mongodbUri + '. ' + err);
