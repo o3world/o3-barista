@@ -4,11 +4,16 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const Twitter = require('twitter');
 const watson = require('watson-developer-cloud');
 
+const Personality = require('./models/personality');
+
 const routes = require('./routes/index');
 const users = require('./routes/users');
+
+const personalityInsightsApiVersion = 'v2';
 
 const app = express();
 
@@ -23,6 +28,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+const mongodbUri = process.env.MONGODB_URI;
+mongoose.connect(mongodbUri, err => {
+  if (err) {
+    console.log('Error connecting to ' + mongodbUri + '. ' + err);
+  } else {
+    console.log('Connected to ' + mongodbUri);
+  }
+});
+
 const twitterClient = new Twitter({
   consumer_key: process.env.O3_BARISTA_TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.O3_BARISTA_TWITTER_CONSUMER_SECRET,
@@ -33,7 +47,7 @@ const twitterClient = new Twitter({
 const personalityInsightsClient = watson.personality_insights({
   username: process.env.O3_BARISTA_INSIGHTS_USERNAME,
   password: process.env.O3_BARISTA_INSIGHTS_PASSWORD,
-  version: 'v2'
+  version: personalityInsightsApiVersion
 });
 
 app.put('/api/watson/:twitteruser', function(req, res) {
@@ -64,6 +78,17 @@ app.put('/api/watson/:twitteruser', function(req, res) {
         if (err) {
           console.log('error:', err);
         } else {
+          const personality = new Personality({
+            twitter_handle: username,
+            raw_response: response,
+            api_version: personalityInsightsApiVersion
+          });
+          personality.save(err => {
+            if (err) {
+              console.log(err);
+            }
+          });
+
           const array = [];
           const i = response.tree.children;
           i.forEach(function(thing) {
