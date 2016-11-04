@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const Twitter = require('twitter');
 const watson = require('watson-developer-cloud');
 
+const Personality = require('./models/personality');
+
 const routes = require('./routes/index');
 const users = require('./routes/users');
 
@@ -76,6 +78,18 @@ app.put('/api/watson/:twitteruser', function(req, res) {
         if (err) {
           console.log('error:', err);
         } else {
+          const personality = new Personality({
+            input_source: 'twitter',
+            username: username,
+            raw_response: response,
+            api_version: personalityInsightsApiVersion
+          });
+          personality.save(err => {
+            if (err) {
+              console.log(err);
+            }
+          });
+
           const array = [];
           const i = response.tree.children;
           i.forEach(function(thing) {
