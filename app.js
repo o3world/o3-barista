@@ -11,6 +11,8 @@ const watson = require('watson-developer-cloud');
 const routes = require('./routes/index');
 const users = require('./routes/users');
 
+const personalityInsightsApiVersion = 'v2';
+
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -43,7 +45,7 @@ const twitterClient = new Twitter({
 const personalityInsightsClient = watson.personality_insights({
   username: process.env.O3_BARISTA_INSIGHTS_USERNAME,
   password: process.env.O3_BARISTA_INSIGHTS_PASSWORD,
-  version: 'v2'
+  version: personalityInsightsApiVersion
 });
 
 app.put('/api/watson/:twitteruser', function(req, res) {
