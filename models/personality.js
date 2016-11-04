@@ -3,13 +3,7 @@
 const mongoose = require('mongoose');
 
 const personalitySchema = mongoose.Schema({
-  input_source: {
-    type: String,
-    enum: [
-      'twitter'
-    ]
-  },
-  username: String,
+  twitter_handle: String,
   raw_response: Object,
   api_version: String
 });

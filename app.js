@@ -79,8 +79,7 @@ app.put('/api/watson/:twitteruser', function(req, res) {
           console.log('error:', err);
         } else {
           const personality = new Personality({
-            input_source: 'twitter',
-            username: username,
+            twitter_handle: username,
             raw_response: response,
             api_version: personalityInsightsApiVersion
           });
