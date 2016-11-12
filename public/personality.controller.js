@@ -12,15 +12,16 @@ angular.module('personality.controller', [])
   ];
 
   $scope.getData = () => {
-    $http.put('/api/watson/' + $scope.twitter)
-      .success(data => {
+    $http
+      .put('/api/watson/' + $scope.twitter)
+      .then(data => {
         $scope.array = data;
 
         $scope.preference = personalityService.determinePreference(data);
         $scope.curiosity = personalityService.getCuriosityPercentage(data);
         $scope.liberty = personalityService.getLibertyPercentage(data);
       })
-      .error(err => {
+      .catch(err => {
         console.log(err);
       })
       .finally(() => resetFeedback());
@@ -41,7 +42,6 @@ angular.module('personality.controller', [])
   };
 
   function resetFeedback() {
-    console.log('resetting feedback');
     $scope.feedbackSubmitted = false;
     $scope.roastFeedbackVisible = false;
   }
