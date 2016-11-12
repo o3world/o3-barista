@@ -7,7 +7,10 @@ const feedbackSchema = mongoose.Schema({
   expected_preference: String,
   actual_preference: String
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 });
 
 const Feedback = mongoose.model('Feedback', feedbackSchema);

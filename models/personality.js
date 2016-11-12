@@ -7,7 +7,10 @@ const personalitySchema = mongoose.Schema({
   raw_response: Object,
   api_version: String
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 });
 
 const Personality = mongoose.model('Personality', personalitySchema);
