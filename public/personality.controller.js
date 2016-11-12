@@ -15,8 +15,10 @@ angular.module('personality.controller', [])
   const rejectParentTraits = R.reject(trait => isParent(trait.id));
 
   $scope.getData = () => {
+    const twitterHandle = normalizeHandle($scope.twitter);
+
     $http
-      .put('/api/watson/' + $scope.twitter)
+      .put('/api/watson/' + twitterHandle)
       .then(personalityResponse => {
         const profile = personalityResponse.data;
 
@@ -34,9 +36,11 @@ angular.module('personality.controller', [])
   };
 
   $scope.submitFeedback = actualPreference => {
+    const twitterHandle = normalizeHandle($scope.twitter);
+
     $http
       .post('/api/feedback', {
-        twitter_handle: $scope.twitter,
+        twitter_handle: twitterHandle,
         expected_preference: $scope.preference,
         actual_preference: actualPreference
       })
@@ -50,5 +54,9 @@ angular.module('personality.controller', [])
   function resetFeedback() {
     $scope.feedbackSubmitted = false;
     $scope.roastFeedbackVisible = false;
+  }
+
+  function normalizeHandle(handle) {
+    return handle.replace(/^@/, '').toLowerCase().trim();
   }
 }]);
