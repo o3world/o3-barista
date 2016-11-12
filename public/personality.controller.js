@@ -12,6 +12,8 @@ angular.module('personality.controller', [])
   ];
 
   $scope.getData = () => {
+    resetFeedback();
+
     $http.put('/api/watson/' + $scope.twitter)
       .success(data => {
         $scope.array = data;
@@ -34,4 +36,9 @@ angular.module('personality.controller', [])
       })
       .then(() => $scope.feedbackSubmitted = true);
   };
+
+  function resetFeedback() {
+    $scope.feedbackSubmitted = false;
+    $scope.showRoastFeedbackOptions = false;
+  }
 }]);
