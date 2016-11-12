@@ -58,6 +58,10 @@ app.put('/api/watson/:twitteruser', function(req, res) {
     return new Promise(function(resolve) {
       const params = { screen_name: username, count: 5000 };
       twitterClient.get('statuses/user_timeline', params, function(error, tweets) {
+        if (error) {
+          console.error(error);
+        }
+
         if (!error) {
           let test;
           for (let i = 0; i < tweets.length; i++) {
