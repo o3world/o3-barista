@@ -63,16 +63,7 @@ app.put('/api/watson/:twitteruser', function(req, res) {
         if (err) {
           console.log('error:', err);
         } else {
-          const personality = new Personality({
-            twitter_handle: username,
-            raw_response: response,
-            api_version: personalityInsightsApiVersion
-          });
-          personality.save(err => {
-            if (err) {
-              console.log(err);
-            }
-          });
+          savePersonalityResponse(username, response);
 
           const personalityArray = parsePersonalityResponse(response);
           console.log(personalityArray);
@@ -102,6 +93,20 @@ function fetchTwitterFeed(username) {
         resolve(test);
       }
     });
+  });
+}
+
+function savePersonalityResponse(username, response) {
+  const personality = new Personality({
+    twitter_handle: username,
+    raw_response: response,
+    api_version: personalityInsightsApiVersion
+  });
+
+  personality.save(err => {
+    if (err) {
+      console.log(err);
+    }
   });
 }
 
