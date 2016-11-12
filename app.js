@@ -54,27 +54,7 @@ const personalityInsightsClient = watson.personality_insights({
 app.put('/api/watson/:twitteruser', function(req, res) {
   const username = req.params.twitteruser;
 
-  const watsonFetch = function() {
-    return new Promise(function(resolve) {
-      const params = { screen_name: username, count: 5000 };
-      twitterClient.get('statuses/user_timeline', params, function(error, tweets) {
-        if (error) {
-          console.error(error);
-        }
-
-        if (!error) {
-          let test;
-          for (let i = 0; i < tweets.length; i++) {
-            console.log(tweets[i].text);
-            test += tweets[i].text;
-          }
-          resolve(test);
-        }
-      });
-    });
-  };
-
-  watsonFetch()
+  fetchTwitterFeed(username)
     .then(function(result) {
       personalityInsightsClient.profile({
         text: result,
@@ -115,6 +95,26 @@ app.put('/api/watson/:twitteruser', function(req, res) {
       console.log(e);
     });
 });
+
+function fetchTwitterFeed(username) {
+  return new Promise(function(resolve) {
+    const params = { screen_name: username, count: 5000 };
+    twitterClient.get('statuses/user_timeline', params, function(error, tweets) {
+      if (error) {
+        console.error(error);
+      }
+
+      if (!error) {
+        let test;
+        for (let i = 0; i < tweets.length; i++) {
+          console.log(tweets[i].text);
+          test += tweets[i].text;
+        }
+        resolve(test);
+      }
+    });
+  });
+}
 
 app.post('/api/feedback', function(req, res) {
   console.log(req.body);
