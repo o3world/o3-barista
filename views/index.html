@@ -22,15 +22,15 @@
       <p>You sound like you would enjoy a {{preference}} roast.</p>
 
       <div ng-hide="feedbackSubmitted">
-        <div ng-hide="showRoastFeedbackOptions">
+        <div ng-hide="roastFeedbackVisible">
           <p>Do you like this roast?</p>
           <div class="row">
             <button ng-click="submitFeedback(preference)">Yes</button>
-            <button ng-click="showRoastFeedbackOptions = true">No</button>
+            <button ng-click="showRoastFeedbackOptions()">No</button>
           </div>
         </div>
 
-        <div ng-show="showRoastFeedbackOptions">
+        <div ng-show="roastFeedbackVisible">
           <p>What kind of roast do you prefer?</p>
           <div class="row">
             <button ng-repeat="roast in roastOptions"

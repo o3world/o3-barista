@@ -37,8 +37,13 @@ angular.module('personality.controller', [])
       .then(() => $scope.feedbackSubmitted = true);
   };
 
+  $scope.showRoastFeedbackOptions = () => {
+    $scope.roastFeedbackVisible = true;
+  };
+
   function resetFeedback() {
+    console.log('resetting feedback');
     $scope.feedbackSubmitted = false;
-    $scope.showRoastFeedbackOptions = false;
+    $scope.roastFeedbackVisible = false;
   }
 }]);
