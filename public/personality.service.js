@@ -6,7 +6,7 @@ angular.module('personality.service', [
 
 .factory('personalityService', [
 'R',
-(R) => {
+R => {
   function determinePreference(profile) {
     const curiosityPercentage = getCuriosityPercentage(profile);
     const libertyPercentage = getLibertyPercentage(profile);
