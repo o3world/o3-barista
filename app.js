@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const routes = require('./routes/index');
-const users = require('./routes/users');
 const watsonRoutes = require('./routes/watson');
 const feedbackRoutes = require('./routes/feedback');
 
@@ -22,7 +21,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/api/watson', watsonRoutes);
 app.use('/api/feedback', feedbackRoutes);
 
