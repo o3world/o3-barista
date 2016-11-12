@@ -20,8 +20,10 @@ R => {
     }
   }
 
-  const findCuriosity = R.find(R.propEq('id', 'Curiosity'));
-  const findLiberty = R.find(R.propEq('id', 'Liberty'));
+  const isIdentifier = R.propEq('id');
+
+  const findCuriosity = R.find(isIdentifier('Curiosity'));
+  const findLiberty = R.find(isIdentifier('Liberty'));
 
   const getPercentage = R.prop('percentage');
 
