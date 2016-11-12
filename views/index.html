@@ -25,9 +25,23 @@
     </p>
   </div>
 
-  <p>Does this sound right?</p>
-  <div class="row">
-    <button ng-click="submitFeedback(preference)">Yes</button>
-    <button>No</button>
+  <div ng-hide="showRoastFeedbackOptions">
+    <p>Do you like this roast?</p>
+    <div class="row">
+      <button ng-click="submitFeedback(preference)">Yes</button>
+      <button ng-click="showRoastFeedbackOptions = true">No</button>
+    </div>
+  </div>
+
+  <div ng-show="showRoastFeedbackOptions">
+    <p>What kind of roast do you prefer?</p>
+    <div class="row">
+      <button ng-repeat="roast in roastOptions"
+              ng-if="roast !== preference"
+              ng-click="submitFeedback(roast)">
+        {{roast}}
+      </button>
+    </div>
+  </div>
   </div>
 </div>

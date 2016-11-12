@@ -5,6 +5,12 @@ angular.module('personality.controller', [])
 .controller('PersonalityController', [
 '$scope', '$http', 'personalityService',
 ($scope, $http, personalityService) => {
+  $scope.roastOptions = [
+    'light',
+    'medium',
+    'dark'
+  ];
+
   $scope.getData = () => {
     $http.put('/api/watson/' + $scope.twitter)
       .success(data => {
