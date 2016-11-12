@@ -6,11 +6,10 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const Feedback = require('./models/feedback');
-
 const routes = require('./routes/index');
 const users = require('./routes/users');
 const watsonRoutes = require('./routes/watson');
+const feedbackRoutes = require('./routes/feedback');
 
 const app = express();
 
@@ -25,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/watson', watsonRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 const mongodbUri = process.env.MONGODB_URI;
 mongoose.connect(mongodbUri, err => {
@@ -33,24 +33,6 @@ mongoose.connect(mongodbUri, err => {
   } else {
     console.log('Connected to ' + mongodbUri);
   }
-});
-
-app.post('/api/feedback', function(req, res) {
-  console.log(req.body);
-
-  const feedback = new Feedback({
-    twitter_handle: req.body.twitter_handle,
-    expected_preference: req.body.expected_preference,
-    actual_preference: req.body.actual_preference
-  });
-
-  feedback.save(err => {
-    if (err) {
-      console.error(err);
-    }
-
-    res.sendStatus(201);
-  });
 });
 
 // error handlers
