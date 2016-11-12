@@ -18,4 +18,16 @@ angular.module('personality.controller', [])
         console.log(err);
       });
   };
+
+  $scope.submitPositiveFeedback = () => {
+    $scope.submitFeedback($scope.preference);
+  };
+
+  $scope.submitFeedback = actualPreference => {
+    $http.post('/api/feedback', {
+      twitter_handle: $scope.twitter,
+      expected_preference: $scope.preference,
+      actual_preference: actualPreference
+    });
+  };
 }]);

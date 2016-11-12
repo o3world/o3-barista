@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const Twitter = require('twitter');
 const watson = require('watson-developer-cloud');
 
+const Feedback = require('./models/feedback');
 const Personality = require('./models/personality');
 
 const routes = require('./routes/index');
@@ -109,6 +110,24 @@ app.put('/api/watson/:twitteruser', function(req, res) {
     .catch(function(e) {
       console.log(e);
     });
+});
+
+app.post('/api/feedback', function(req, res) {
+  console.log(req.body);
+
+  const feedback = new Feedback({
+    twitter_handle: req.body.twitter_handle,
+    expected_preference: req.body.expected_preference,
+    actual_preference: req.body.actual_preference
+  });
+
+  feedback.save(err => {
+    if (err) {
+      console.error(err);
+    }
+
+    res.sendStatus(201);
+  });
 });
 
 // error handlers
