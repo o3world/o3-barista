@@ -3,50 +3,55 @@
 <h1>O<sub>3</sub> Barista</h1>
 
 <div ng-app="app" ng-controller="PersonalityController">
-  <form id="twitterInput" ng-submit="getData()">
-    <input type="text"
-        id="twitterName"
-        class="form-control form-control-vertical"
-        name="twitterHandle"
-        placeholder="Twitter Handle"
-        ng-model="twitter">
-    <input class="btn" type="submit" value="Submit">
-  </form>
-  <p></p>
+  <div class="section">
+    <form id="twitterInput" ng-submit="getData()">
+      <input type="text"
+             id="twitterName"
+             class="form-control form-control-vertical"
+             name="twitterHandle"
+             placeholder="Twitter Handle"
+             ng-model="twitter">
+      <input class="btn" type="submit" value="Submit">
+    </form>
+  </div>
 
   <div ng-if="preference" ng-cloak>
-    <p>Your desire to discover and learn is at {{curiosity | number:2 | decimalToPercent}}.</p>
-    <p>Your desire to pursue new experiences is at {{liberty | number:2 | decimalToPercent}}.</p>
-    <p>You sound like you would enjoy a {{preference}} roast.</p>
+    <div class="section">
+      <p>Your desire to discover and learn is at {{curiosity | number:2 | decimalToPercent}}.</p>
+      <p>Your desire to pursue new experiences is at {{liberty | number:2 | decimalToPercent}}.</p>
+      <p>You sound like you would enjoy a {{preference}} roast.</p>
 
-    <div ng-hide="feedbackSubmitted">
-      <div ng-hide="showRoastFeedbackOptions">
-        <p>Do you like this roast?</p>
-        <div class="row">
-          <button ng-click="submitFeedback(preference)">Yes</button>
-          <button ng-click="showRoastFeedbackOptions = true">No</button>
+      <div ng-hide="feedbackSubmitted">
+        <div ng-hide="showRoastFeedbackOptions">
+          <p>Do you like this roast?</p>
+          <div class="row">
+            <button ng-click="submitFeedback(preference)">Yes</button>
+            <button ng-click="showRoastFeedbackOptions = true">No</button>
+          </div>
+        </div>
+
+        <div ng-show="showRoastFeedbackOptions">
+          <p>What kind of roast do you prefer?</p>
+          <div class="row">
+            <button ng-repeat="roast in roastOptions"
+                    ng-if="roast !== preference"
+                    ng-click="submitFeedback(roast)">
+              {{roast}}
+            </button>
+          </div>
         </div>
       </div>
 
-      <div ng-show="showRoastFeedbackOptions">
-        <p>What kind of roast do you prefer?</p>
-        <div class="row">
-          <button ng-repeat="roast in roastOptions"
-                  ng-if="roast !== preference"
-                  ng-click="submitFeedback(roast)">
-            {{roast}}
-          </button>
-        </div>
+      <div ng-show="feedbackSubmitted">
+        <p>Thanks for the feedback, enjoy your brew.</p>
       </div>
     </div>
 
-    <div ng-show="feedbackSubmitted">
-      <p>Thanks for the feedback, enjoy your brew.</p>
+    <div class="section">
+      <h3>Other Traits</h3>
+      <p ng-repeat="stuff in array" ng-cloak>
+        {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
+      </p>
     </div>
-
-    <h3>Other Traits</h3>
-    <p ng-repeat="stuff in array" ng-cloak>
-      {{stuff.id}}: {{stuff.percentage*100 | number:0}}%
-    </p>
   </div>
 </div>

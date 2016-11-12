@@ -53,6 +53,10 @@ input[type='text'], textarea {
   padding: 20px;
 }
 
+.section {
+  margin-bottom: 20px;
+}
+
 .row {
   display: flex;
   flex-direction: row;
