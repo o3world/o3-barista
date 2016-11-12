@@ -53,6 +53,28 @@ input[type='text'], textarea {
   padding: 20px;
 }
 
+.section {
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row > * {
+  flex-grow: 1;
+  margin: 0 5px;
+}
+
+.row > :first-child {
+  margin-left: 0;
+}
+
+.row > :last-child {
+  margin-right: 0;
+}
+
 .logo {
   height: 100px;
   width: 100px;
@@ -79,6 +101,7 @@ input[type='text'], textarea {
   outline: none;
 }
 
+button,
 .btn {
   display: inline-block;
   width: 100%;
