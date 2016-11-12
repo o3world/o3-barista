@@ -74,20 +74,9 @@ app.put('/api/watson/:twitteruser', function(req, res) {
             }
           });
 
-          const array = [];
-          const i = response.tree.children;
-          i.forEach(function(thing) {
-            thing.children.forEach(function(thing2) {
-              const obj = { id: thing2.id, percentage: thing2.percentage };
-              array.push(obj);
-              thing2.children.forEach(function(thing4) {
-                const obj = { id: thing4.id, percentage: thing4.percentage };
-                array.push(obj);
-              });
-            });
-          });
-          console.log(array);
-          res.json(array);
+          const personalityArray = parsePersonalityResponse(response);
+          console.log(personalityArray);
+          res.json(personalityArray);
         }
       });
     })
@@ -114,6 +103,24 @@ function fetchTwitterFeed(username) {
       }
     });
   });
+}
+
+function parsePersonalityResponse(response) {
+  const array = [];
+  const i = response.tree.children;
+
+  i.forEach(function(thing) {
+    thing.children.forEach(function(thing2) {
+      const obj = { id: thing2.id, percentage: thing2.percentage };
+      array.push(obj);
+      thing2.children.forEach(function(thing4) {
+        const obj = { id: thing4.id, percentage: thing4.percentage };
+        array.push(obj);
+      });
+    });
+  });
+
+  return array;
 }
 
 app.post('/api/feedback', function(req, res) {
