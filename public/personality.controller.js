@@ -3,24 +3,31 @@
 angular.module('personality.controller', [])
 
 .controller('PersonalityController', [
-'$scope', '$http', 'personalityService',
-($scope, $http, personalityService) => {
+'$scope', '$http', 'R', 'personalityService',
+($scope, $http, R, personalityService) => {
   $scope.roastOptions = [
     'light',
     'medium',
     'dark'
   ];
 
-  $scope.getData = () => {
-    $http.put('/api/watson/' + $scope.twitter)
-      .success(data => {
-        $scope.array = data;
+  const isParent = id => id.indexOf('_parent') !== -1;
+  const rejectParentTraits = R.reject(trait => isParent(trait.id));
 
-        $scope.preference = personalityService.determinePreference(data);
-        $scope.curiosity = personalityService.getCuriosityPercentage(data);
-        $scope.liberty = personalityService.getLibertyPercentage(data);
+  $scope.getData = () => {
+    $http
+      .put('/api/watson/' + $scope.twitter)
+      .then(personalityResponse => {
+        const profile = personalityResponse.data;
+
+        const profileWithoutParents = rejectParentTraits(profile);
+        $scope.array = profileWithoutParents;
+
+        $scope.preference = personalityService.determinePreference(profile);
+        $scope.curiosity = personalityService.getCuriosityPercentage(profile);
+        $scope.liberty = personalityService.getLibertyPercentage(profile);
       })
-      .error(err => {
+      .catch(err => {
         console.log(err);
       })
       .finally(() => resetFeedback());
@@ -41,7 +48,6 @@ angular.module('personality.controller', [])
   };
 
   function resetFeedback() {
-    console.log('resetting feedback');
     $scope.feedbackSubmitted = false;
     $scope.roastFeedbackVisible = false;
   }
