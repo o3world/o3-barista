@@ -19,10 +19,6 @@ angular.module('personality.controller', [])
       });
   };
 
-  $scope.submitPositiveFeedback = () => {
-    $scope.submitFeedback($scope.preference);
-  };
-
   $scope.submitFeedback = actualPreference => {
     $http.post('/api/feedback', {
       twitter_handle: $scope.twitter,
