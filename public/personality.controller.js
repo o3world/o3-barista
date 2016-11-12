@@ -14,12 +14,13 @@ angular.module('personality.controller', [])
   $scope.getData = () => {
     $http
       .put('/api/watson/' + $scope.twitter)
-      .then(data => {
-        $scope.array = data;
+      .then(personalityResponse => {
+        const profile = personalityResponse.data;
+        $scope.array = profile;
 
-        $scope.preference = personalityService.determinePreference(data);
-        $scope.curiosity = personalityService.getCuriosityPercentage(data);
-        $scope.liberty = personalityService.getLibertyPercentage(data);
+        $scope.preference = personalityService.determinePreference(profile);
+        $scope.curiosity = personalityService.getCuriosityPercentage(profile);
+        $scope.liberty = personalityService.getLibertyPercentage(profile);
       })
       .catch(err => {
         console.log(err);
