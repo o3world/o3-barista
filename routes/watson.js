@@ -91,9 +91,7 @@ function parsePersonalityResponse(response) {
   // This may change in the future.
   const aspects = response.tree.children;
 
-  for (let i = 0; i < aspects.length; i++) {
-    const aspect = aspects[i];
-
+  aspects.forEach(aspect => {
     // loop for traits of aspects
     aspect.children.forEach(trait => {
       const traitObject = { id: trait.id, percentage: trait.percentage };
@@ -105,8 +103,8 @@ function parsePersonalityResponse(response) {
         resultArray.push(subTraitObject);
       });
     });
-  }
-
+  });
+  
   return resultArray;
 }
 
