@@ -83,21 +83,29 @@ function savePersonalityResponse(username, response) {
 }
 
 function parsePersonalityResponse(response) {
-  const array = [];
-  const i = response.tree.children;
+  const resultArray = [];
 
-  i.forEach(thing => {
-    thing.children.forEach(thing2 => {
-      const obj = { id: thing2.id, percentage: thing2.percentage };
-      array.push(obj);
-      thing2.children.forEach(thing4 => {
-        const obj = { id: thing4.id, percentage: thing4.percentage };
-        array.push(obj);
+  // There are only 3 child objects as the value of the tree property for now.
+  // These serve as the aspects which will lead to an insight.
+  // Personality, Needs, Values are the 3 aspects
+  // This may change in the future.
+  const aspects = response.tree.children;
+
+  aspects.forEach(aspect => {
+    // loop for traits of aspects
+    aspect.children.forEach(trait => {
+      const traitObject = { id: trait.id, percentage: trait.percentage };
+      resultArray.push(traitObject);
+
+      // loop for traits of traits of aspects
+      trait.children.forEach(subTrait => {
+        const subTraitObject = { id: subTrait.id, percentage: subTrait.percentage };
+        resultArray.push(subTraitObject);
       });
     });
   });
-
-  return array;
+  
+  return resultArray;
 }
 
 module.exports = router;
