@@ -9,23 +9,23 @@ O3 Barista is a Node.js Express application that uses the [IBM Watson Personalit
 
 https://o3-barista.herokuapp.com/
 
-## O3 Worlds website
+## O3 World's website
 
 http://o3world.com/
 
 ## Local Setup
+
+Install the Heroku CLI.
+
+```
+brew install heroku
+```
 
 Clone the repo and navigate into it.
 
 ```
 git clone https://github.com/o3world/o3-barista.git
 cd o3-barista
-```
-
-Set up the `heroku` remote.
-
-```
-heroku git:remote -a o3-barista
 ```
 
 Install and activate Node v6.6.0, preferably using [nvm](https://github.com/creationix/nvm). Once it is installed, you can run `nvm use` to activate it.
@@ -42,22 +42,20 @@ npm install
 
 Set up your Watson Personality Insights and Twitter API credentials as environment variables in your `.env` file. You can use the included `.env.example` file as a base. See further below for more details on both the Watson Personality Insights and Twitter API.
 
-````
-O3_BARISTA_INSIGHTS_USERNAME=<Watson Personality Insights username>
-O3_BARISTA_INSIGHTS_PASSWORD=<Watson Personality Insights password>
-O3_BARISTA_TWITTER_CONSUMER_KEY=<Twitter consumer key>
-O3_BARISTA_TWITTER_CONSUMER_SECRET=<Twitter consumer secret>
-O3_BARISTA_TWITTER_ACCESS_TOKEN_KEY=<Twitter access token key>
-O3_BARISTA_TWITTER_ACCESS_TOKEN_SECRET=<Twitter access token secret>
-````
-
 Start the Express server.
+
+```
+heroku local web
+```
+
+The app will now be available at http://localhost:5000
 
 set your environment variables in your `.bashrc` / `.zshrc`. The app will be available at http://localhost:3000 by default.
 
 ```
 npm start
 ```
+
 ##IMB Bluemix Platform
 
 All Watson services are available via the IBM Bluemix platform. Credentials can be obtained within the service’s “Service Credentials” page in the dashboard.
