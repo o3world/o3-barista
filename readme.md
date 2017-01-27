@@ -3,7 +3,7 @@
 O3 Barista is a Node.js Express application that uses the [IBM Watson Personality Insights API](https://www.ibm.com/watson/developercloud/personality-insights.html) to scan a person's Twitter feed and map their personality to what kind of coffee drinker they are.
 
 #
-![screenshot of project main page](images/demo-screenshot.jpg)
+![screenshot of project main page](/public/images/demo-screenshot.jpg)
 
 ## Link to project on Heroku
 
