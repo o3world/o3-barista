@@ -9,6 +9,10 @@ O3 Barista is a Node.js Express application that uses the [IBM Watson Personalit
 
 https://o3-barista.herokuapp.com/
 
+## O3 Worlds website
+
+http://o3world.com/
+
 ## Local Setup
 
 Clone the repo and navigate into it.
