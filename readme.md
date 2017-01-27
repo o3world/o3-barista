@@ -18,7 +18,7 @@ http://o3world.com/
 Clone the repo and navigate into it.
 
 ```
-git clone git@bitbucket.org:o3world/o3-barista.git
+git clone https://github.com/o3world/o3-barista.git
 cd o3-barista
 ```
 
