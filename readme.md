@@ -2,6 +2,17 @@
 
 O3 Barista is a Node.js Express application that uses the [IBM Watson Personality Insights API](https://www.ibm.com/watson/developercloud/personality-insights.html) to scan a person's Twitter feed and map their personality to what kind of coffee drinker they are.
 
+#
+![screenshot of project main page](/public/images/demo-screenshot.jpg)
+
+## Link to project on Heroku
+
+https://o3-barista.herokuapp.com/
+
+## O3 World's website
+
+http://o3world.com/
+
 ## Local Setup
 
 Install the Heroku CLI.
@@ -13,14 +24,8 @@ brew install heroku
 Clone the repo and navigate into it.
 
 ```
-git clone git@bitbucket.org:o3world/o3-barista.git
+git clone https://github.com/o3world/o3-barista.git
 cd o3-barista
-```
-
-Set up the `heroku` remote.
-
-```
-heroku git:remote -a o3-barista
 ```
 
 Install and activate Node v6.6.0, preferably using [nvm](https://github.com/creationix/nvm). Once it is installed, you can run `nvm use` to activate it.
@@ -35,9 +40,7 @@ Install the Node dependencies.
 npm install
 ```
 
-Set up your Watson Personality Insights and Twitter API credentials as environment variables in your `.env` file. You can use the included `.env.example` file as a base.
-
-See the [internal documentation](https://paper.dropbox.com/doc/O3-Barista-hZmAqe12GPBCMqVxgk94M) for more details on obtaining credentials.
+Set up your Watson Personality Insights and Twitter API credentials as environment variables in your `.env` file. You can use the included `.env.example` file as a base. See further below for more details on both the Watson Personality Insights and Twitter API.
 
 Start the Express server.
 
@@ -47,19 +50,20 @@ heroku local web
 
 The app will now be available at http://localhost:5000
 
-Alternatively, you can run the start script directly, and set your environment variables in your `.bashrc` / `.zshrc`. The app will be available at http://localhost:3000 by default.
+set your environment variables in your `.bashrc` / `.zshrc`. The app will be available at http://localhost:3000 by default.
 
 ```
 npm start
 ```
 
-## Deployment
+##IMB Bluemix Platform
 
-The app is deployed to the `o3-barista` Heroku app via Git.
+All Watson services are available via the IBM Bluemix platform. Credentials can be obtained within the service’s “Service Credentials” page in the dashboard.
 
-```
-git push heroku master
-```
+**Console: https://console.ng.bluemix.net/**
 
-## Internal Documentation
-[Paper Doc](https://paper.dropbox.com/doc/Coffee-Personality-hZmAqe12GPBCMqVxgk94M)
+##Twitter API
+
+In order to read a user’s twitter feed, the Coffee Personality app will need to access the Twitter API via OAuth authorization. Credentials can be obtained within the authorized app’s “Keys and Access Tokens” page.
+
+**Console: https://apps.twitter.com/**
