@@ -23,7 +23,7 @@ angular.module('personality.controller', [])
         const profile = personalityResponse.data;
 
         const profileWithoutParents = rejectParentTraits(profile);
-        $scope.array = profileWithoutParents;
+        $scope.personalityData = profileWithoutParents;
 
         $scope.preference = personalityService.determinePreference(profile);
         $scope.curiosity = personalityService.getCuriosityPercentage(profile);
