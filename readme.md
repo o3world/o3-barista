@@ -7,7 +7,7 @@ O3 Barista is a Node.js Express web application that uses the [IBM Watson Person
 
 ## Live Demo
 
-https://o3-barista.herokuapp.com/
+http://barista.o3labs.com/
 
 ## O3 Barista is a O3 Labs project. More information about O3 Labs is available here: 
 
