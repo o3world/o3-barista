@@ -1,5 +1,5 @@
 //
-// Base 
+// Base
 // --------------------------------------------------
 
 
@@ -108,16 +108,16 @@ button,
 }
 
 ::-webkit-input-placeholder {
-  color: #161515;
+  color: $gray;
 }
 ::-moz-placeholder {
-  color: #161515;
+  color: $gray;
 }
 :-ms-input-placeholder {
-  color: #161515;
+  color: $gray;
 }
 :-moz-placeholder {
-  color: #161515;
+  color: $gray;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
