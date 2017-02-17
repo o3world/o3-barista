@@ -28,6 +28,9 @@ angular.module('personality.controller', [])
         $scope.preference = personalityService.determinePreference(profile);
         $scope.curiosity = personalityService.getCuriosityPercentage(profile);
         $scope.liberty = personalityService.getLibertyPercentage(profile);
+
+        twitterHandleSubmit();
+        setRoastGauge();
       })
       .catch(err => {
         console.log(err);
@@ -54,6 +57,10 @@ angular.module('personality.controller', [])
   function resetFeedback() {
     $scope.feedbackSubmitted = false;
     $scope.roastFeedbackVisible = false;
+  }
+
+  function twitterHandleSubmit() {
+    $scope.twitterHandleSubmitted = true;
   }
 
   function normalizeHandle(handle) {
