@@ -4,12 +4,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <header>
-  <img src="/images/o3Logo@3x.png">
+  <img src="/images/o3Logo@3x.png" alt="O3 World Logo">
 </header>
 
 <div ng-app="app" ng-controller="PersonalityController">
   <div class="container" ng-hide="twitterHandleSubmitted">
-    <img class="logo" src="/svg/o3-labs-logo.svg">
+    <img class="logo" src="/svg/o3-labs-logo.svg" alt="O3 Moods Logo Big">
     <h1>O<sub>3</sub> Barista</h1>
     <div class="underline"></div>
     <div class="app-descripton">
@@ -22,7 +22,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                class="form-control form-control-vertical"
                name="twitterHandle"
                placeholder="Twitter handle (ex: @username)"
-               ng-model="twitter">
+               ng-model="twitter" required>
         <input class="btn" type="submit" value="Submit">
       </form>
     </div>
@@ -35,19 +35,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="underline"></div>
     <div class="section roast-results">
       <div ng-if="preference == 'light'">
-        <img src="/images/Coffee-Gauge-LightRoast.png">
+        <img src="/images/Coffee-Gauge-LightRoast.png" alt="coffee roast gauge light">
         <h2>{{preference}} Roast</h2>
         <p>Light roasts have a toasted grain taste and pronounced acidity. The origin flavors of the bean are retained to a greater extent than in darker roasted coffees.</p>
       </div>
 
       <div ng-if="preference == 'medium'">
-        <img src="/images/Coffee-Gauge-MedRoast.png">
+        <img src="/images/Coffee-Gauge-MedRoast.png" alt="coffee roast gauge medium">
         <h2>{{preference}} Roast</h2>
         <p>Medium roasts have more body than light roasts. They lack the grainy taste often found in light roasts, exhibiting more balanced flavor, aroma, and acidity.</p>
       </div>
 
       <div ng-if="preference == 'dark'">
-        <img src="/images/Coffee-Gauge-DarkRoast.png">
+        <img src="/images/Coffee-Gauge-DarkRoast.png" alt="coffee roast gauge dark">
         <h2>{{preference}} Roast</h2>
         <p>Dark roasts will generally have a bitter and smoky or even burnt taste. The coffee’s origin flavors are eclipsed by the flavors of the roasting process.</p>
       </div>
@@ -56,8 +56,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div ng-hide="roastFeedbackVisible">
           <h4>Rate Our Recommendation:</h4>
           <div class="row">
-            <div id="like" ng-click="submitFeedback(preference)"></div>
-            <div id="dislike" ng-click="showRoastFeedbackOptions()"></div>
+            <div class="feedback-icon feedback-icon--like" ng-click="submitFeedback(preference)"></div>
+            <div class="feedback-icon feedback-icon--dislike" ng-click="showRoastFeedbackOptions()"></div>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="trait-container">
           <div class="trait-percent">{{curiosity | number:2 | decimalToPercent}}</div>
           <div class="trait-description">
-            <h2>Desire to Discover & Learn</h2>
+            <h2>Desire to Discover &amp; Learn</h2>
             <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
           </div>
         </div>
@@ -107,13 +107,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="footer-container">
         <button id="twitter">
           <div class="button-container">
-            <img src="/images/iconTwitter@3x.png">
+            <img src="/images/iconTwitter@3x.png" alt="twitter icon">
             SHARE ON TWITTER
           </div>
         </button>
         <button id="start-over">
           <div class="button-container">
-            <img src="/images/o3MoodsLogoSmall@3x.png">
+            <img src="/images/o3MoodsLogoSmall@3x.png" alt="O3 Moods logo">
             START OVER
           </div>
         </button>

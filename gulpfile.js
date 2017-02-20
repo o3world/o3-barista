@@ -8,10 +8,6 @@ const sass = require('gulp-sass');
 const notify = require('gulp-notify');
 const jshint = require('gulp-jshint');
 
-const paths = {
-    styles: ['./public/styles/scss/style.scss']
-};
-
 const lintFiles = [
   '**/*.js',
   '!node_modules/**/*',
@@ -19,7 +15,7 @@ const lintFiles = [
 ];
 
 gulp.task('css', () => {
-    gulp.src(paths.styles)
+    gulp.src('./public/styles/scss/style.scss')
         .pipe(plumber())
         .pipe(sass())
         .pipe(minifycss())

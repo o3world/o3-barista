@@ -30,7 +30,6 @@ angular.module('personality.controller', [])
         $scope.liberty = personalityService.getLibertyPercentage(profile);
 
         twitterHandleSubmit();
-        setRoastGauge();
       })
       .catch(err => {
         console.log(err);

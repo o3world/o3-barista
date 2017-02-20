@@ -25,20 +25,20 @@
     color: $lighter-gray;
   }
 
-  #like {
+  .feedback-icon {
     width: 30px;
     height: 30px;
-    background: url('../images/iconAccurate@3x.jpg');
     background-repeat: no-repeat;
-    background-size: 30px;
-  }
 
-  #dislike {
-    width: 30px;
-    height: 30px;
-    background: url('../images/iconInaccurate@3x.jpg');
-    background-repeat: no-repeat;
-    background-size: 30px;
+    &.feedback-icon--like {
+      background: url('../images/iconAccurate@3x.jpg');
+      background-size: 30px;
+    }
+
+    &.feedback-icon--dislike {
+      background: url('../images/iconInaccurate@3x.jpg');
+      background-size: 30px;
+    }
   }
 
   @include bp(xtrasmall) {
@@ -46,6 +46,8 @@
     margin-right: auto;
     margin-left: auto;
   }
+
+
 }
 
 .trait-results {
@@ -69,21 +71,21 @@
       font-weight: lighter;
       color: $lighter-gray
     }
-
-    .trait-percent {
-      width: 70px;
-      height: 70px;
-      margin: 8px;
-      padding: 17px;
-      font-size: 24px;
-      background-color: $light-brown;
-      color: $white;
-    }
-
-    .trait-description {
-      width: 70%;
-      margin: 8px;
-      text-align: left;
-    }
   }
+}
+
+.trait-percent {
+  width: 70px;
+  height: 70px;
+  margin: 8px;
+  padding: 17px;
+  font-size: 24px;
+  background-color: $light-brown;
+  color: $white;
+}
+
+.trait-description {
+  width: 70%;
+  margin: 8px;
+  text-align: left;
 }

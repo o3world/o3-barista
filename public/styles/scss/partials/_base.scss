@@ -15,8 +15,9 @@ body {
   margin: 0;
   color: #fff;
   font-family: "Roboto Slab", Georgia, Times, serif;
-  font-size: 14px;
+  font-size: 0.875em;
   text-align: center;
+  background-color: $black;
   background: url('../images/bg-deepspace.jpg');
   background-size: cover;
   background-repeat: repeat;
@@ -130,7 +131,7 @@ button,
 
 @include bp(xtrasmall) {
   body {
-    font-size: 16px;
+    font-size: 1em;
   }
 
   .logo {
