@@ -89,7 +89,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="trait-percent">{{curiosity | number:2 | decimalToPercent}}</div>
           <div class="trait-description">
             <h2>Desire to Discover &amp; Learn</h2>
-            <p>Individuals who are curious tend to exhibit inquisitive thinking such as exploration, investigation, and learning, evident by observation in humans and other animals. Curiosity is heavily associated with all aspects of human development, in which derives the process of learning and desire to acquire knowledge and skill.</p>
+            <p>Individuals who are curious tend to exhibit inquisitive thinking such as exploration, investigation, and learning, evident by observation in humans and other animals. <span ng-hide="!readMore1">Curiosity is heavily associated with all aspects of human development, in which derives the process of learning and desire to acquire knowledge and skill.</span></p>
+            <h5 ng-click="readMore1 = !readMore1">
+              <span ng-show="!readMore1">Read More</span>
+              <span ng-hide="!readMore1">Read Less</span>
+            </h5>
           </div>
         </div>
 
@@ -97,7 +101,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="trait-percent">{{liberty | number:2 | decimalToPercent}}</div>
           <div class="trait-description">
             <h2>Desire to Pursue New Experience</h2>
-            <p>Individuals who are open to experience are intellectually curious, open to emotion, sensitive to beauty and willing to try new things. They tend to be, when compared to closed people, more creative and more aware of their feelings. They are also more likely to hold unconventional beliefs.</p>
+            <p>Individuals who are open to experience are intellectually curious, open to emotion, sensitive to beauty and willing to try new things. <span ng-hide="!readMore2">They tend to be, when compared to closed people, more creative and more aware of their feelings. They are also more likely to hold unconventional beliefs.</span></p>
+            <h5 ng-click="readMore2 = !readMore2">
+              <span ng-show="!readMore2">Read More</span>
+              <span ng-hide="!readMore2">Read Less</span>
+            </h5>
           </div>
         </div>
       </div>
@@ -105,12 +113,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <footer>
       <div class="footer-container">
-        <button id="twitter">
-          <div class="button-container">
-            <img src="/svg/twitter.svg" alt="twitter icon">
-            SHARE ON TWITTER
-          </div>
-        </button>
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%20got%20coffee%20roast%20insights%20from%20O3%20Barista!%20Check%20it%20out%20at%20http://barista.o3labs.com/" target="_blank">
+          <button id="twitter">
+            <div class="button-container">
+              <img src="/svg/twitter.svg" alt="twitter icon">
+              SHARE ON TWITTER
+            </div>
+          </button>
+        </a>
         <button id="start-over">
           <div class="button-container" ng-click="resetApp()">
             <img src="/svg/o3-labs-logo-dark.svg" alt="O3 Moods logo">

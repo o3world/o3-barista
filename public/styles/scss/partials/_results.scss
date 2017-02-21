@@ -27,6 +27,18 @@
   }
 
   @include bp(xtrasmall) {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include bp(small) {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include bp(small) {
     width: 33.3333%;
     margin-right: auto;
     margin-left: auto;
@@ -83,6 +95,12 @@
     h2, h3 {
       font-family: $serif;
       color: $light-brown;
+    }
+
+    h5 {
+      font-family: $sans-serif;
+      font-weight: lighter;
+      color: $dark-gray;
     }
 
     p {
