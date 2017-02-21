@@ -4,7 +4,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <header>
-  <img src="/images/o3Logo@3x.png" alt="O3 World Logo">
+  <img src="/svg/o3-logo.svg" alt="O3 World logo">
 </header>
 
 <div ng-app="app" ng-controller="PersonalityController">
@@ -35,19 +35,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="underline"></div>
     <div class="section roast-results">
       <div ng-if="preference == 'light'">
-        <img src="/images/Coffee-Gauge-LightRoast.png" alt="coffee roast gauge light">
+        <div class="roast-gauge roast-gauge--light"></div>
         <h2>{{preference}} Roast</h2>
         <p>Light roasts have a toasted grain taste and pronounced acidity. The origin flavors of the bean are retained to a greater extent than in darker roasted coffees.</p>
       </div>
 
       <div ng-if="preference == 'medium'">
-        <img src="/images/Coffee-Gauge-MedRoast.png" alt="coffee roast gauge medium">
+        <div class="roast-gauge roast-gauge--medium"></div>
         <h2>{{preference}} Roast</h2>
         <p>Medium roasts have more body than light roasts. They lack the grainy taste often found in light roasts, exhibiting more balanced flavor, aroma, and acidity.</p>
       </div>
 
       <div ng-if="preference == 'dark'">
-        <img src="/images/Coffee-Gauge-DarkRoast.png" alt="coffee roast gauge dark">
+        <div class="roast-gauge roast-gauge--dark"></div>
         <h2>{{preference}} Roast</h2>
         <p>Dark roasts will generally have a bitter and smoky or even burnt taste. The coffee’s origin flavors are eclipsed by the flavors of the roasting process.</p>
       </div>
@@ -56,8 +56,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div ng-hide="roastFeedbackVisible">
           <h4>Rate Our Recommendation:</h4>
           <div class="row">
-            <div class="feedback-icon feedback-icon--like" ng-click="submitFeedback(preference)"></div>
-            <div class="feedback-icon feedback-icon--dislike" ng-click="showRoastFeedbackOptions()"></div>
+            <img src="/svg/icon-accurate.svg" alt="accurate icon" ng-click="submitFeedback(preference)">
+            <img src="/svg/icon-inaccurate.svg" alt="inaccurate icon" ng-click="showRoastFeedbackOptions()">
           </div>
         </div>
 
@@ -89,7 +89,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="trait-percent">{{curiosity | number:2 | decimalToPercent}}</div>
           <div class="trait-description">
             <h2>Desire to Discover &amp; Learn</h2>
-            <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            <p>Individuals who are curious tend to exhibit inquisitive thinking such as exploration, investigation, and learning, evident by observation in humans and other animals. Curiosity is heavily associated with all aspects of human development, in which derives the process of learning and desire to acquire knowledge and skill.</p>
           </div>
         </div>
 
@@ -97,28 +97,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="trait-percent">{{liberty | number:2 | decimalToPercent}}</div>
           <div class="trait-description">
             <h2>Desire to Pursue New Experience</h2>
-            <p>Individuals who score high tend to enjoy interacting with people, be enthusiastic, action-oriented…</p>
+            <p>Individuals who are open to experience are intellectually curious, open to emotion, sensitive to beauty and willing to try new things. They tend to be, when compared to closed people, more creative and more aware of their feelings. They are also more likely to hold unconventional beliefs.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <footer>
+    <!-- <footer>
       <div class="footer-container">
         <button id="twitter">
           <div class="button-container">
-            <img src="/images/iconTwitter@3x.png" alt="twitter icon">
+            <img src="/svg/twitter.svg" alt="twitter icon">
             SHARE ON TWITTER
           </div>
         </button>
         <button id="start-over">
           <div class="button-container">
-            <img src="/images/o3MoodsLogoSmall@3x.png" alt="O3 Moods logo">
+            <img src="/svg/o3-labs-logo-dark.svg" alt="O3 Moods logo">
             START OVER
           </div>
         </button>
       </div>
-    </footer>
+    </footer> -->
 
   </div>
 </div>

@@ -66,24 +66,30 @@
 @mixin headers() {
     h1, h2, h3, h4, h5, h6,
     .h1, .h2, .h3, .h4, .h5, .h6 {
-        @content
+        @content;
     }
 }
 
 @mixin placeholder() {
     ::-webkit-input-placeholder {
-        @content
+        @content;
     }
 
     :-moz-placeholder           {
-        @content
+        @content;
     }
 
     ::-moz-placeholder          {
-        @content
+        @content;
     }
 
     :-ms-input-placeholder      {
-        @content
+        @content;
     }
+}
+
+@mixin bg-format($bg-size) {
+  background-repeat: no-repeat;
+  background-size: $bg-size;
+  background-position: center;
 }
