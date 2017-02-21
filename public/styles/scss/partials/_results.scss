@@ -1,0 +1,128 @@
+//
+// Results styles
+// --------------------------------------------------
+
+.roast-results {
+  margin: 10px 0;
+  padding: 20px 30px;
+  border-radius: 2px;
+  background-color: $white;
+
+  h1, h2, h3, h4, h5 {
+    font-family: $serif;
+    color: $dark-gray;
+    text-transform: capitalize;
+  }
+
+  p {
+    padding: 15px;
+    font-size: $sans-serif;
+    color: $lighter-gray;
+  }
+
+  img {
+    width: 45px;
+    height: 45px;
+    padding: 3px;
+  }
+
+  @include bp(xtrasmall) {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include bp(small) {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include bp(small) {
+    width: 33.3333%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.roast-gauge {
+  width: 100%;
+  height: 188px;
+  padding: 10px;
+
+  &.roast-gauge--light {
+    background: url('../images/Coffee-Gauge-LightRoast.png');
+    @include bg-format(contain);
+
+    @include bp(retina) {
+      background: url('../images/Coffee-Gauge-LightRoast@2x.png');
+      @include bg-format(contain);
+    }
+  }
+
+  &.roast-gauge--medium {
+    background: url('../images/Coffee-Gauge-MedRoast.png');
+    @include bg-format(contain);
+
+    @include bp(retina) {
+      background: url('../images/Coffee-Gauge-MedRoast@2x.png');
+      @include bg-format(contain);
+    }
+  }
+
+  &.roast-gauge--dark {
+    background: url('../images/Coffee-Gauge-DarkRoast.png');
+    @include bg-format(contain);
+
+    @include bp(retina) {
+      background: url('../images/Coffee-Gauge-DarkRoast@2x.png');
+      @include bg-format(contain);
+    }
+  }
+}
+
+.trait-results {
+  margin: 10px 0;
+
+  .trait-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 8px 0;
+    border-radius: 2px;
+    background-color: $white;
+
+    h2, h3 {
+      font-family: $serif;
+      color: $light-brown;
+    }
+
+    h5 {
+      font-family: $sans-serif;
+      font-weight: lighter;
+      color: $dark-gray;
+    }
+
+    p {
+      font-family: $sans-serif;
+      font-weight: lighter;
+      color: $lighter-gray
+    }
+  }
+}
+
+.trait-percent {
+  width: 70px;
+  height: 70px;
+  margin: 8px;
+  padding: 17px;
+  font-size: 24px;
+  background-color: $light-brown;
+  color: $white;
+}
+
+.trait-description {
+  width: 70%;
+  margin: 8px;
+  text-align: left;
+}

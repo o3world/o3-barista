@@ -3,34 +3,61 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<img class="logo" src="/svg/o3-labs-logo.svg">
-<h1>O<sub>3</sub> Barista</h1>
+<header>
+  <img src="/svg/o3-logo.svg" alt="O3 World logo">
+</header>
 
 <div ng-app="app" ng-controller="PersonalityController">
-  <div class="section">
-    <form id="twitterInput" ng-submit="getData()">
-      <input type="text"
-             id="twitterName"
-             class="form-control form-control-vertical"
-             name="twitterHandle"
-             placeholder="Twitter Handle"
-             ng-model="twitter">
-      <input class="btn" type="submit" value="Submit">
-    </form>
+  <div class="container" ng-show="appStart" ng-hide="twitterHandleSubmitted">
+    <img class="logo" src="/svg/o3-labs-logo.svg" alt="O3 Moods Logo Big">
+    <h1>O<sub>3</sub> Barista</h1>
+    <div class="underline"></div>
+    <div class="app-descripton">
+      <p>Combining technology and social media to create coffee connoisseurs.</p>
+    </div>
+    <div class="section submission">
+      <form id="twitterInput" ng-submit="getData()">
+        <input type="text"
+               id="twitterName"
+               class="form-control form-control-vertical"
+               name="twitterHandle"
+               placeholder="Twitter handle (ex: @username)"
+               ng-model="twitter" required>
+        <input class="btn" type="submit" value="Submit">
+      </form>
+    </div>
   </div>
 
-  <div ng-if="preference" ng-cloak>
-    <div class="section">
-      <p>Your desire to discover and learn is at {{curiosity | number:2 | decimalToPercent}}.</p>
-      <p>Your desire to pursue new experiences is at {{liberty | number:2 | decimalToPercent}}.</p>
-      <p>You sound like you would enjoy a {{preference}} roast.</p>
+  <div ng-show="twitterHandleSubmitted" ng-hide="appStart" ng-cloak>
+    <div class="app-descripton">
+      <p>Your barista results.</p>
+    </div>
+    <div class="underline"></div>
+    <div class="section roast-results">
+      <div ng-if="preference == 'light'">
+        <div class="roast-gauge roast-gauge--light"></div>
+        <h2>{{preference}} Roast</h2>
+        <p>Light roasts have a toasted grain taste and pronounced acidity. The origin flavors of the bean are retained to a greater extent than in darker roasted coffees.</p>
+      </div>
+
+      <div ng-if="preference == 'medium'">
+        <div class="roast-gauge roast-gauge--medium"></div>
+        <h2>{{preference}} Roast</h2>
+        <p>Medium roasts have more body than light roasts. They lack the grainy taste often found in light roasts, exhibiting more balanced flavor, aroma, and acidity.</p>
+      </div>
+
+      <div ng-if="preference == 'dark'">
+        <div class="roast-gauge roast-gauge--dark"></div>
+        <h2>{{preference}} Roast</h2>
+        <p>Dark roasts will generally have a bitter and smoky or even burnt taste. The coffee’s origin flavors are eclipsed by the flavors of the roasting process.</p>
+      </div>
 
       <div ng-hide="feedbackSubmitted">
         <div ng-hide="roastFeedbackVisible">
-          <p>Do you like this roast?</p>
+          <h4>Rate Our Recommendation:</h4>
           <div class="row">
-            <button ng-click="submitFeedback(preference)">Yes</button>
-            <button ng-click="showRoastFeedbackOptions()">No</button>
+            <img src="/svg/icon-accurate.svg" alt="accurate icon" ng-click="submitFeedback(preference)">
+            <img src="/svg/icon-inaccurate.svg" alt="inaccurate icon" ng-click="showRoastFeedbackOptions()">
           </div>
         </div>
 
@@ -51,11 +78,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="section">
-      <h3>Other Traits</h3>
-      <p ng-repeat="trait in personalityData" ng-cloak>
-        {{trait.id}}: {{trait.percentage*100 | number:0}}%
-      </p>
+    <div class="container">
+      <div class="section trait-results">
+        <div class="app-descripton">
+          <p>Your Twitter Timeline Tells Us</p>
+        </div>
+        <div class="underline"></div>
+
+        <div class="trait-container">
+          <div class="trait-percent">{{curiosity | number:2 | decimalToPercent}}</div>
+          <div class="trait-description">
+            <h2>Desire to Discover &amp; Learn</h2>
+            <p>Individuals who are curious tend to exhibit inquisitive thinking such as exploration, investigation, and learning, evident by observation in humans and other animals. <span ng-hide="!readMore1">Curiosity is heavily associated with all aspects of human development, in which derives the process of learning and desire to acquire knowledge and skill.</span></p>
+            <h5 ng-click="readMore1 = !readMore1">
+              <span ng-show="!readMore1">Read More</span>
+              <span ng-hide="!readMore1">Read Less</span>
+            </h5>
+          </div>
+        </div>
+
+        <div class="trait-container">
+          <div class="trait-percent">{{liberty | number:2 | decimalToPercent}}</div>
+          <div class="trait-description">
+            <h2>Desire to Pursue New Experience</h2>
+            <p>Individuals who are open to experience are intellectually curious, open to emotion, sensitive to beauty and willing to try new things. <span ng-hide="!readMore2">They tend to be, when compared to closed people, more creative and more aware of their feelings. They are also more likely to hold unconventional beliefs.</span></p>
+            <h5 ng-click="readMore2 = !readMore2">
+              <span ng-show="!readMore2">Read More</span>
+              <span ng-hide="!readMore2">Read Less</span>
+            </h5>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <footer>
+      <div class="footer-container">
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%20got%20coffee%20roast%20insights%20from%20O3%20Barista!%20Check%20it%20out%20at%20http://barista.o3labs.com/" target="_blank">
+          <button id="twitter">
+            <div class="button-container">
+              <img src="/svg/twitter.svg" alt="twitter icon">
+              SHARE ON TWITTER
+            </div>
+          </button>
+        </a>
+        <button id="start-over">
+          <div class="button-container" ng-click="resetApp()">
+            <img src="/svg/o3-labs-logo-dark.svg" alt="O3 Moods logo">
+            START OVER
+          </div>
+        </button>
+      </div>
+    </footer>
+
   </div>
 </div>
