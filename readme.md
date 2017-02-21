@@ -9,7 +9,7 @@ O3 Barista is a Node.js Express web application that uses the [IBM Watson Person
 
 http://barista.o3labs.com/
 
-## O3 Barista is a O3 Labs project. More information about O3 Labs is available here: 
+## O3 Barista is a O3 Labs project. More information about O3 Labs is available here:
 
 http://o3world.com/work/labs/
 
@@ -50,6 +50,12 @@ Start the Express server.
 
 ```
 heroku local web
+```
+
+Initialize gulp watch for css, js, and svg files
+
+```
+gulp watch
 ```
 
 The app will now be available at http://localhost:5000
