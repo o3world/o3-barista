@@ -11,6 +11,9 @@ angular.module('personality.controller', [])
     'dark'
   ];
 
+  $scope.appStart = true;
+  $scope.twitterHandleSubmitted = false;
+
   const isParent = id => id.indexOf('_parent') !== -1;
   const rejectParentTraits = R.reject(trait => isParent(trait.id));
 
@@ -53,16 +56,24 @@ angular.module('personality.controller', [])
     $scope.roastFeedbackVisible = true;
   };
 
+  $scope.resetApp = () => {
+    $scope.appStart = true;
+    $scope.twitterHandleSubmitted = false;
+    $scope.twitter = '';
+  };
+
   function resetFeedback() {
     $scope.feedbackSubmitted = false;
     $scope.roastFeedbackVisible = false;
   }
 
   function twitterHandleSubmit() {
+    $scope.appStart = false;
     $scope.twitterHandleSubmitted = true;
   }
 
   function normalizeHandle(handle) {
     return handle.replace(/^@/, '').toLowerCase().trim();
   }
+
 }]);
