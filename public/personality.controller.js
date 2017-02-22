@@ -62,6 +62,10 @@ angular.module('personality.controller', [])
     $scope.twitter = '';
   };
 
+  $scope.loading = () => {
+    $scope.loadState = true;
+  }
+
   function resetFeedback() {
     $scope.feedbackSubmitted = false;
     $scope.roastFeedbackVisible = false;
@@ -70,6 +74,7 @@ angular.module('personality.controller', [])
   function twitterHandleSubmit() {
     $scope.appStart = false;
     $scope.twitterHandleSubmitted = true;
+    $scope.loadState = false;
   }
 
   function normalizeHandle(handle) {

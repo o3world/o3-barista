@@ -60,7 +60,7 @@ gulp watch
 
 The app will now be available at http://localhost:5000
 
-set your environment variables in your `.bashrc` / `.zshrc`. The app will be available at http://localhost:3000 by default.
+Alternatively, you can run the start script directly, and set your environment variables in your `.bashrc` / `.zshrc`. The app will be available at http://localhost:3000 by default.
 
 ```
 npm start
