@@ -19,7 +19,7 @@ angular.module('personality.controller', [])
 
   $scope.getData = () => {
     const twitterHandle = normalizeHandle($scope.twitter);
-
+    $scope.loadState = true;
     $http
       .put('/api/watson/' + twitterHandle)
       .then(personalityResponse => {
@@ -70,6 +70,7 @@ angular.module('personality.controller', [])
   function twitterHandleSubmit() {
     $scope.appStart = false;
     $scope.twitterHandleSubmitted = true;
+    $scope.loadState = false;
   }
 
   function normalizeHandle(handle) {

@@ -27,7 +27,6 @@ body {
 
 h1, h2, h3 {
   font-family: Lato, Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
   margin-top: 0;
 }
 
@@ -53,7 +52,7 @@ h3 {
 .underline {
   width: 33px;
   height: 2px;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
   background-color: $medium-red;
 }
 
@@ -86,7 +85,7 @@ button,
   background-image: none;
   color: #fff;
   font-family: Lato, Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: normal;
   line-height: 1;
   text-align: center;
@@ -126,7 +125,23 @@ button,
 }
 
 .app-descripton {
-  padding: 0 30px;
+
+  p {
+    font-size: 20px;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  opacity: 0.5;
+  z-index: 1;
 }
 
 @include bp(xtrasmall) {
