@@ -18,11 +18,13 @@
     "body-parser": "^1.13.2",
     "debug": "^2.2.0",
     "express": "^4.13.1",
+    "lodash": "^4.17.15",
+    "lodash.template": "^4.5.0",
     "mongoose": "^5.9.1",
     "morgan": "^1.6.1",
     "pug": "^2.0.0-beta6",
     "twitter": "^1.4.0",
-    "watson-developer-cloud": "^2.3.2",
+    "watson-developer-cloud": "^4.0.1",
     "webpack": "^4.41.6"
   },
   "devDependencies": {
